@@ -206,7 +206,7 @@ class GetAllPosts(APIView):
 
     def get(self , request , format=None):
         user = request.user
-        post_objs = Post.objects.filter(user=user)
+        post_objs = Post.objects.filter(user=user).order_by('created_at')
         posts = []
         for post in post_objs:
             comments = post.comments.all()
